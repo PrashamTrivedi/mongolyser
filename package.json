@@ -71,7 +71,7 @@
   },
   "build": {
     "appId": "com.mongodb.myapp",
-    "productName": "Mongolyser",
+    "productName": "mongolyser",
     "files": [
       "build/**/*",
       "node_modules/**/*"
