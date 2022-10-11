@@ -19,7 +19,7 @@ function DashboardCard08() {
       '12-01-2022', '01-01-2023',
     ],
     datasets: [
-      // Indigo line
+      // leafy line
       {
         label: 'Current',
         data: [
@@ -28,13 +28,13 @@ function DashboardCard08() {
           122, 110, 104, 152, 166, 233, 268,
           252, 284, 284, 333, 323,
         ],
-        borderColor: tailwindConfig().theme.colors.indigo[500],
+        borderColor: tailwindConfig().theme.colors.leafy[500],
         fill: false,
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
+        pointBackgroundColor: tailwindConfig().theme.colors.leafy[500],
       },
       // Blue line
       {

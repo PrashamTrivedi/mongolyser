@@ -92,7 +92,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .form-checkbox,
 .form-radio {
-    @apply text-indigo-500 border border-slate-300;
+    @apply text-leafy-800 border border-slate-300;
 }
 
 /* Chrome, Safari and Opera */

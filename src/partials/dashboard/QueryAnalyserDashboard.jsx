@@ -315,11 +315,11 @@ export default (props) => {
       {/* Table section */}
       <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200 m-10">
         <header className="flex item-center justify-between px-5 py-4 border-b border-slate-100">
-          <h2 className="font-semibold text-indigo-800">Query Analysis Details</h2>
+          <h2 className="font-semibold text-leafy-900">Query Analysis Details</h2>
           
           {/* Grou Checkbox */}
           <div className="flex items-center">
-            <span className="mr-4 font-semibold text-indigo-800">Group by Query</span>
+            <span className="mr-4 font-semibold text-leafy-800">Group by Query</span>
             <Checkbox checked={isGrouped} setChecked={() => {
               setIsGrouped(!isGrouped);
             }} />
@@ -356,7 +356,7 @@ export default (props) => {
           <button title="Reset Search" onClick={e => {
             resetSearch();
             e.preventDefault();
-          }} className="btn bg-indigo-500 hover:bg-indigo-600 text-white">
+          }} className="btn bg-leafy-800 hover:bg-leafy-900 text-white">
             <svg className="rotate-45 w-4 h-4 fill-white opacity-50 shrink-0" viewBox="0 0 16 16">
               <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
             </svg>
@@ -367,7 +367,7 @@ export default (props) => {
           conditionalRowStyles={[
             {  
               when: row => row["Plan Summary"] === "COLLSCAN",
-              style: row => ({ backgroundColor: "#bec4fe" })
+              style: row => ({ backgroundColor: "#FFCDC7" })
             }
           ]}
           paginationPerPage={20}

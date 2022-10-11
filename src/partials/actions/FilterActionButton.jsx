@@ -122,7 +122,7 @@ function FilterButton({ title, options = [], onSelect, ...props }) {
               
               displayOptions.map(option => {
                 return (
-                  <li key={option} className="py-1 px-3">
+                  <li key={option} className="font-inter py-1 px-3">
                     <label className="flex items-center">
                       <input onChange={e => { onSelectOptions(option) }} type="checkbox" className="form-checkbox" checked={selectedOptions.includes(option)} />
                       <span className="text-sm font-medium ml-2">{option}</span>
@@ -138,7 +138,7 @@ function FilterButton({ title, options = [], onSelect, ...props }) {
                 <button className="btn-xs bg-white border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-600">Clear</button>
               </li>
               <li>
-                <button className="btn-xs bg-indigo-500 hover:bg-indigo-600 text-white" onClick={() => {
+                <button className="btn-xs bg-leafy-800 hover:bg-leafy-900 text-white" onClick={() => {
                   setDropdownOpen(false);
                   onSelect(selectedOptions);
                 }} onBlur={() => setDropdownOpen(false)}>Apply</button>

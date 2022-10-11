@@ -74,7 +74,7 @@ function FilterInput(props = defaultProps) {
                 <button className="btn-xs bg-white border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-600">Clear</button>
               </li>
               <li>
-                <button className="btn-xs bg-indigo-500 hover:bg-indigo-600 text-white" onClick={() => {
+                <button className="btn-xs bg-leafy-800 hover:bg-leafy-900 text-white" onClick={() => {
                   setDropdownOpen(false);
 
                   if (props.validate(filterText)) {

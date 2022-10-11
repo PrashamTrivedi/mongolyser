@@ -23,7 +23,7 @@ export default (props) => {
         {/* <BackBanner backAction={backAction} /> */}
         <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200 m-10">
           <header className="px-5 py-4 border-b border-slate-100">
-            <h2 className="font-semibold text-indigo-800">
+            <h2 className="font-semibold text-leafy-800">
               error: no data found!
             </h2>
           </header>
@@ -44,13 +44,13 @@ export default (props) => {
   return (
     <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200 m-10">
       <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-indigo-800">Index Stats Details</h2>
+        <h2 className="font-semibold text-leafy-900">Index Stats Details</h2>
       </header>
       <ul className="my-2 mx-2 mb-20">
         {Object.keys(data.idx_details).map((ns, idx) => {
           return (
             <li key={ns} className="flex px-2 mt-4">
-              <div className="grow border border-indigo-300 rounded px-5 text-sm py-2">
+              <div className="grow border border-leafy-800 rounded px-5 text-sm py-2">
                 <div
                   className="grow flex justify-between items-center"
                   onClick={() => toggleIdxTable(idx)}
@@ -86,11 +86,11 @@ export default (props) => {
 
                   <div className="shrink-0 self-center ml-2">
                     <a
-                      className="font-medium text-indigo-500 hover:text-indigo-600"
+                      className="font-medium text-leafy-800 hover:text-leafy-800"
                       href="#0"
                     >
                       View Indexes
-                      <span className="hidden sm:inline"> -&gt;</span>
+                      <span className="font-inter hidden sm:inline"> -&gt;</span>
                     </a>
                   </div>
                 </div>

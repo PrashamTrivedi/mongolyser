@@ -29,8 +29,8 @@ function DashboardCard04() {
         data: [
           4900, 2600, 5350, 4800, 5200, 4800,
         ],
-        backgroundColor: tailwindConfig().theme.colors.indigo[500],
-        hoverBackgroundColor: tailwindConfig().theme.colors.indigo[600],
+        backgroundColor: tailwindConfig().theme.colors.leafy[500],
+        hoverBackgroundColor: tailwindConfig().theme.colors.leafy[600],
         barPercentage: 0.66,
         categoryPercentage: 0.66,
       },

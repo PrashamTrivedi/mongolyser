@@ -86,7 +86,7 @@ export default (props) => {
   return (
     <>
       {visibleUI === DEFAULT ? (
-        <div className="flex bg-indigo-200 justify-center w-screen min-h-screen">
+        <div className="flex bg-leafy-200 w-screen min-h-screen">
           <IndexBanner
             data={data}
             onAction={onActionTrigger}

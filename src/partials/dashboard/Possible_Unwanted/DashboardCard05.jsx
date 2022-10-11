@@ -66,17 +66,17 @@ function DashboardCard05() {
   const chartData = {
     labels: slicedLabels,
     datasets: [
-      // Indigo line
+      // leafy line
       {
         data: slicedData,
         fill: true,
         backgroundColor: `rgba(${hexToRGB(tailwindConfig().theme.colors.blue[500])}, 0.08)`,
-        borderColor: tailwindConfig().theme.colors.indigo[500],
+        borderColor: tailwindConfig().theme.colors.leafy[500],
         borderWidth: 2,
         tension: 0,
         pointRadius: 0,
         pointHoverRadius: 3,
-        pointBackgroundColor: tailwindConfig().theme.colors.indigo[500],
+        pointBackgroundColor: tailwindConfig().theme.colors.leafy[500],
         clip: 20,
       },
     ],

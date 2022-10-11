@@ -24,3 +24,9 @@
     height: 16px;
     width: 16px;
 }
+
+.form-checkbox, .form-radio {
+    color: #00684A !important;
+    border-color: #00684A !important;
+    outline-color: #00684A;
+}
