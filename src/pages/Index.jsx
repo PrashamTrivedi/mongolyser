@@ -68,8 +68,7 @@ export default (props) => {
         onFilePicker(payload);
         break;
       case "Query Analysis":
-        onQueryAnalysis(path);
-        break;
+        return onQueryAnalysis(path);
       case "Query Analysis Filter":
         onQueryAnalysis(path);
         break;
