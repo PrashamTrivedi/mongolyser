@@ -1,5 +1,5 @@
 {
-  "name": "mongolyser-2",
+  "name": "mongolyser",
   "version": "1.0.1",
   "homepage": "./",
   "main": "./public/electron.js",
