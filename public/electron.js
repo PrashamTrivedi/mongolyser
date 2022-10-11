@@ -1,13 +1,18 @@
 // Module to control the application lifecycle and the native browser window.
-const { app, BrowserWindow, protocol } = require("electron");
+const { app, BrowserWindow, protocol, dialog, ipcMain } = require("electron");
 const path = require("path");
 const url = require("url");
+
+// Require Engine Services
+const indexStats = require("./engine/analysers/index.analyser");
+const queryAnalysis = require("./engine/analysers/query.analyser");
+const pickerUtils = require('./engine/utils/pickers');
 
 // Create the native browser window.
 function createWindow() {
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1366,
+    height: 768,
     // Set the path of an additional "preload" script that can be used to
     // communicate between node-land and browser-land.
     webPreferences: {
@@ -52,6 +57,16 @@ function setupLocalFilesNormalizerProxy() {
 // is ready to create the browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  // Register Index Stats IPC 
+  try {
+    ipcMain.handle('engine:indexStats', indexStats.get_index_stats);
+    ipcMain.handle('engine:filePicker', pickerUtils.filePicker);
+    ipcMain.handle('engine:queryAnalysis', queryAnalysis.analyse_queries);
+    ipcMain.handle('engine:queryAnalysisFilter', queryAnalysis.analyse_queries_filter);  
+  } catch (error) {
+    console.error(error);
+  }
+
   createWindow();
   setupLocalFilesNormalizerProxy();
 
@@ -62,6 +77,8 @@ app.whenReady().then(() => {
       createWindow();
     }
   });
+}).catch(e => {
+  dialog.showErrorBox("Error", e);
 });
 
 // Quit when all windows are closed, except on macOS.

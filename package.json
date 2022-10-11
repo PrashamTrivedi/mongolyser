@@ -9,12 +9,28 @@
   "description": "Mongo Analyser for logs and system",
   "private": true,
   "dependencies": {
+    "@seald-io/nedb": "^3.1.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "chart.js": "^3.8.0",
+    "chartjs-adapter-moment": "^1.0.0",
+    "date-fns": "^2.29.3",
+    "event-stream": "^4.0.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "mongodb": "^4.9.1",
+    "qs": "^6.11.0",
     "react": "^18.2.0",
+    "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
+    "react-flatpickr": "^3.10.13",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-scroll-to-top": "^3.0.0",
+    "react-select": "^5.4.0",
+    "react-transition-group": "^4.4.2",
+    "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -25,7 +41,7 @@
     "electron:start": "concurrently -k \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && electronmon .\"",
     "electron:package:mac": "npm run build && electron-builder -m -c.extraMetadata.main=build/electron.js",
     "electron:package:win": "npm run build && electron-builder -w -c.extraMetadata.main=build/electron.js",
-    "electron:package:linux": "npm run build && electron-builder -l -c.extraMetadata.main=build/electron.js" 
+    "electron:package:linux": "npm run build && electron-builder -l -c.extraMetadata.main=build/electron.js"
   },
   "eslintConfig": {
     "extends": [
@@ -42,17 +58,24 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.3",
+    "autoprefixer": "^10.4.12",
     "concurrently": "^7.4.0",
     "cross-env": "^7.0.3",
     "electron": "^21.1.0",
     "electron-builder": "^23.6.0",
     "electronmon": "^2.0.2",
+    "postcss": "^8.4.17",
+    "tailwindcss": "^3.1.8",
     "wait-on": "^6.0.1"
   },
   "build": {
-    "appId": "com.electron.myapp",
-    "productName": "My Electron App",
-    "files": ["build/**/*", "node_modules/**/*"],
+    "appId": "com.mongodb.myapp",
+    "productName": "Mongolyser",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
     "directories": {
       "buildResources": "public"
     },
@@ -66,5 +89,4 @@
       "target": "deb"
     }
   }
-
 }
