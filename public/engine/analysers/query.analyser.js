@@ -94,8 +94,8 @@ exports.analyse_queries = async (channel, log_file, slow_ms = DEFAULT_SLOW_MS) =
 
                                 // Only store unique collections list upto 300 collections;
                                 if (namespacesList.size < 300) {
-                                  // Add namespace to the group
-                                  namespacesList.add(parsed_log.Namespace);
+                                    // Add namespace to the group
+                                    namespacesList.add(parsed_log.Namespace);
                                 }
 
                                 // Calculate SlowOp Count
@@ -217,19 +217,16 @@ exports.analyse_queries = async (channel, log_file, slow_ms = DEFAULT_SLOW_MS) =
                 stream.resume();
             }))
             .on('error', function (err) {
-                reject({
-                    status: 500,
-                    success: false,
-                    message: err.message
-                })
-                return {
-
-                };
+                dialog.showMessageBoxSync({
+                    message: err.message,
+                    title: "Something Went Wrong.",
+                    type: "info"
+                });
             })
             .on('end', async function () {
                 console.log("Sending Results to client");
                 local_db_summary.insert(parsed_log_summary).catch(console.error);
-                
+
                 const dataGrouped = await local_db_grouped.fetch({}, 20, 0, { "count": -1 }).catch(e => console.log(e))
                 const totalGrouped = await local_db_grouped.count({}).catch(console.error);
 
@@ -240,8 +237,8 @@ exports.analyse_queries = async (channel, log_file, slow_ms = DEFAULT_SLOW_MS) =
                         initialData: [],
                         initialDataGrouped: dataGrouped,
                         filters: {
-                          namespaces: Array.from(namespacesList),
-                          timeRange: timeRange
+                            namespaces: Array.from(namespacesList),
+                            timeRange: timeRange
                         },
                         pagination: {
                             currentPage: 1,
