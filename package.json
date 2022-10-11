@@ -80,7 +80,10 @@
       "buildResources": "public"
     },
     "mac": {
-      "target": "dmg",
+      "target": {
+        "target": "dmg",
+        "arch": "universal"
+      },
       "icon": "app_logo.png"
     },
     "win": {
