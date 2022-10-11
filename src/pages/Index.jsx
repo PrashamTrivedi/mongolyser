@@ -18,6 +18,9 @@ export default (props) => {
 
     try {
       const data = await window.engineAPI.indexStats(path);
+      if(!data) {
+        return false
+      }
       setData(data);
       setVisibleUI(INDEX);
     } catch (error) {
@@ -49,9 +52,6 @@ export default (props) => {
     }
     try {
       const data = await window.engineAPI.queryAnalysis(path);
-
-      console.log(data);
-
       setData(data);
       setVisibleUI(QUERY_ANALYSIS);
     } catch (error) {
@@ -63,8 +63,7 @@ export default (props) => {
     console.log("onActionTrigger:path", path);
     switch (value) {
       case "Index Analysis":
-        onIndexStats(path);
-        break;
+        return onIndexStats(path);
       case "File Picker":
         onFilePicker(payload);
         break;

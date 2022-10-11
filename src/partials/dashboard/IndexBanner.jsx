@@ -4,7 +4,7 @@ import heroImage from "../../images/hero.png";
 
 // TODO: Discuss should we have a central place to list all analysis
 function IndexBanner(props) {
-  const [actions, setActions] = useState([
+  const actions = [
     { value: "Index Analysis", label: "Index Analysis", type: "cluster" },
     // { value: "Oplog Analysis", label: "Oplog Analysis", type: "cluster" },
     {
@@ -12,7 +12,7 @@ function IndexBanner(props) {
       label: "Query Analysis (Log Analysis)",
       type: "log",
     },
-  ]);
+  ];
   // { value: "Sharding Analysis", label: "Sharding Analysis", type: "cluster" },
   // {
   //   value: "General Cluster Health",
@@ -46,6 +46,18 @@ function IndexBanner(props) {
 
   function toggleLoader() {
     setLoader(!loader);
+  }
+
+  async function onAction() {
+    toggleLoader();
+    const ret = await props.onAction({
+      value: actionSelected.value,
+      type: actionSelected.type,
+      path: connectionUrl,
+    });
+    if(!ret) {
+      setLoader(false)
+    }
   }
 
   return (
@@ -142,12 +154,7 @@ function IndexBanner(props) {
             <button
               onClick={(e) => {
                 e.preventDefault();
-                props.onAction({
-                  value: actionSelected.value,
-                  type: actionSelected.type,
-                  path: connectionUrl,
-                });
-                toggleLoader();
+                onAction();
               }}
               className="p-2 btn bg-leafy-800 hover:bg-leafy-900 text-white mt-3"
             >
