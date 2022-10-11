@@ -80,13 +80,16 @@
       "buildResources": "public"
     },
     "mac": {
-      "target": "dmg"
+      "target": "dmg",
+      "icon": "app_logo.png"
     },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "app_logo.png"
     },
     "linux": {
-      "target": "deb"
+      "target": "deb",
+      "icon": "app_logo.png"
     }
   }
 }
