@@ -2,7 +2,7 @@ const MongoDBAdapter = require("../adapters/mongodb.adapter").MongoDBAdapter;
 const moment = require("moment");
 
 
-exports.get_shard_analysis = async (connString) => {
+exports.get_shard_analysis = async (channel, connString) => {
     // Connect to MongoDB 
     let mongoDBAdapter = new MongoDBAdapter();
     await mongoDBAdapter.connect(connString, "config");
@@ -216,7 +216,7 @@ exports.get_shard_analysis = async (connString) => {
 };
 
 
-exports.get_shard_status = async (connString) => {
+exports.get_shard_status = async (channel, connString) => {
     // Connect to MongoDB 
     let mongoDBAdapter = new MongoDBAdapter();
     await mongoDBAdapter.connect(connString);

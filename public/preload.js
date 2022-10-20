@@ -12,6 +12,9 @@ process.once("loaded", () => {
     indexStats: (...args) => ipcRenderer.invoke('engine:indexStats', ...args),
     logFilePicker: (...args) => ipcRenderer.invoke('engine:filePicker', ...args),
     queryAnalysis: (...args) => ipcRenderer.invoke('engine:queryAnalysis', ...args),
-    queryAnalysisFilter: (...args) => ipcRenderer.invoke('engine:queryAnalysisFilter', ...args)
+    queryAnalysisFilter: (...args) => ipcRenderer.invoke('engine:queryAnalysisFilter', ...args),
+    connectionAnalysis: (...args) => ipcRenderer.invoke('engine:connectionAnalysis', ...args),
+    writeLoadAnalysis: (...args) => ipcRenderer.invoke('engine:writeLoadAnalysis', ...args),
+    clusterEventAnalysis: (...args) => ipcRenderer.invoke('engine:clusterEventAnalysis', ...args)
   })
 });

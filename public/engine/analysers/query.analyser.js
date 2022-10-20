@@ -163,8 +163,10 @@ exports.analyse_queries = async (channel, log_file, slow_ms = DEFAULT_SLOW_MS) =
                                     }
                                     if (opType === "Update") {
                                         // Bypass UpdateMany Logs As they do not contain much information
-                                        if (typeof (log.attr.command.updates[0]) != 'undefined')
+                                        if (typeof (log?.attr?.command?.updates?.[0]) != 'undefined')
                                             parsed_log.Filter = JSON.stringify(log.attr.command.updates[0].q);
+                                        else
+                                            parsed_log.Filter = JSON.stringify({});
 
                                         if (parsed_log["Plan Summary"] === "COLLSCAN") parsed_log_summary.nCOLLSCAN++;
                                         parsed_log_summary.nUpdate++;
@@ -217,6 +219,7 @@ exports.analyse_queries = async (channel, log_file, slow_ms = DEFAULT_SLOW_MS) =
                 stream.resume();
             }))
             .on('error', function (err) {
+                console.log(err);
                 dialog.showMessageBoxSync({
                     message: err.message,
                     title: "Something Went Wrong.",
@@ -229,7 +232,6 @@ exports.analyse_queries = async (channel, log_file, slow_ms = DEFAULT_SLOW_MS) =
 
                 const dataGrouped = await local_db_grouped.fetch({}, 20, 0, { "count": -1 }).catch(e => console.log(e))
                 const totalGrouped = await local_db_grouped.count({}).catch(console.error);
-
                 resolve({
                     status: 200,
                     data: {
@@ -308,7 +310,6 @@ exports.analyse_queries_filter = async (channel, filters = defaultFilters, page 
         data = await local_db_detail.fetch(query, 20, page - 1, sortBy);
         total = await local_db_detail.count(query);
     }
-
     return {
         status: 200,
         data: data,

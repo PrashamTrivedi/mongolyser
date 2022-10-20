@@ -15,22 +15,23 @@ exports.MongoDBAdapter = class {
         }
     }
 
-    async findDocFieldsByFilter(collection, query, projection, limit) {
+    async findDocFieldsByFilter(collection, query, projection, limit, sort) {
         if (!query) {
             throw Error("mongoClient.findDocFieldsByFilter: query is not an object");
         }
         return await this.#db.collection(collection).find(query, {
             projection: projection || {},
-            limit: lmt || 0
+            limit: limit || 0,
+            sort: sort || {}
         }).toArray();
     }
 
-    async runAggregation(collection, query) {
+    async runAggregation(collection, query, allowDiskUse = false) {
         if (!Array.isArray(query)) {
             throw Error("mongoClient.findDocByAggregation: query is not an object");
         }
         
-        return await this.#db.collection(collection).aggregate(query).toArray();
+        return await this.#db.collection(collection).aggregate(query, {allowDiskUse: allowDiskUse}).toArray();
     }
 
     async getDocumentCountByQuery(collection, query) {
@@ -55,6 +56,10 @@ exports.MongoDBAdapter = class {
 
     switchDatabase(db_name) {
         this.#db = this.#connection.db(db_name);
+    }
+
+    async getCollectionStats(collection) {
+        return await this.#db.collection(collection).stats()
     }
 
     async close() {
