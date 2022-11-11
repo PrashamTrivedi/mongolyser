@@ -4,7 +4,8 @@
   "homepage": "./",
   "main": "./public/electron.js",
   "author": {
-    "name": "Flex Consulting Team"
+    "name": "Flex Consulting Team",
+    "email": "gobind.singh@mongodb.com"
   },
   "description": "Mongo Analyser for logs and system",
   "private": true,
