@@ -1,6 +1,8 @@
 const LocalDBAdapter = require("../adapters/nedb.adapter").LocalDBAdapter;
 const fs = require("fs");
 const es = require('event-stream');
+const { dialog } = require('electron');
+
 const {
     process_aggregation,
     filter_commands,
