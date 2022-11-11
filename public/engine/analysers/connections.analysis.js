@@ -2,7 +2,6 @@ const MongoDBAdapter = require("../adapters/mongodb.adapter").MongoDBAdapter;
 
 
 exports.get_current_conn_analysis = async (channel, connectionString) => {
-    console.log(connectionString);
     // Connect to MongoDB 
     let mongoDBAdapter = new MongoDBAdapter();
     await mongoDBAdapter.connect(connectionString);
@@ -19,7 +18,7 @@ exports.get_current_conn_analysis = async (channel, connectionString) => {
     const connectionList = []
     for (const key in connections) {
         if (Object.hasOwnProperty.call(connections, key)) {
-            connectionList.push({ip: key, count: connections[key]})
+            connectionList.push({ ip: key, count: connections[key] })
         }
     }
     return {
