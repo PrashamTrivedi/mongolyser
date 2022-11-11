@@ -10,7 +10,7 @@ function IndexBanner(props) {
       label: "Index Analysis",
       type: "cluster",
       alertMessage: "",
-      infoMessage: "",
+      infoMessage: "Be advised of dhandles in case of large volume of collections.",
     },
     // { value: "Oplog Analysis", label: "Oplog Analysis", type: "cluster" },
     {
@@ -18,7 +18,7 @@ function IndexBanner(props) {
       label: "Query Analysis (Log Analysis)",
       type: "log",
       alertMessage: "",
-      infoMessage: ".log (max size - 1GB)",
+      infoMessage: ".log files only. Works for MongoDB v4.4+. Larger the file; more the time needed for processing.",
     },
     {
       value: "Connection Analysis",
@@ -32,14 +32,14 @@ function IndexBanner(props) {
       label: "Write Load Analysis (Oplog Analysis)",
       type: "cluster",
       alertMessage: "This is an expensive process and will run COLLSCAN on Oplog.rs. Please use with Caution",
-      infoMessage: "",
+      infoMessage: "For sharded clusters, use the connection string of the Shard (replica set) being diagnosed.",
     },
     {
       value: "Cluster Event Analysis",
       label: "Cluster Event Analysis",
       type: "log",
       alertMessage: "",
-      infoMessage: "",
+      infoMessage: ".log files only. Works for MongoDB v4.4+.",
     },
   ];
   // { value: "Sharding Analysis", label: "Sharding Analysis", type: "cluster" },

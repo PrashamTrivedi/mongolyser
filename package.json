@@ -1,6 +1,6 @@
 {
   "name": "mongolyser",
-  "version": "1.0.1",
+  "version": "2.0.1",
   "homepage": "./",
   "main": "./public/electron.js",
   "author": {
@@ -71,7 +71,7 @@
     "wait-on": "^6.0.1"
   },
   "build": {
-    "appId": "com.mongodb.myapp",
+    "appId": "com.mongodb.mongolyser",
     "productName": "mongolyser",
     "files": [
       "build/**/*",
@@ -88,11 +88,38 @@
       "icon": "app_logo.png"
     },
     "win": {
-      "target": "nsis",
+      "target": "portable",
       "icon": "app_logo.png"
     },
     "linux": {
-      "target": "deb",
+      "target": [
+        {
+          "target": "deb",
+          "arch": [
+            "x64",
+            "ia32",
+            "armv7l",
+            "arm64",
+            "x64",
+            "ia32",
+            "armv7l",
+            "arm64"
+          ]
+        },
+        {
+          "target": "rpm",
+          "arch": [
+            "x64",
+            "ia32",
+            "armv7l",
+            "arm64",
+            "x64",
+            "ia32",
+            "armv7l",
+            "arm64"
+          ]
+        }
+      ],
       "icon": "app_logo.png"
     }
   }
