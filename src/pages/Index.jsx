@@ -5,10 +5,11 @@ import CONSTANTS from "../misc/Constants";
 
 
 export default (props) => {
-  const {DEFAULT, INDEX, QUERY_ANALYSIS } = CONSTANTS;
+  const { DEFAULT, INDEX, QUERY_ANALYSIS, CONNECTION_ANALYSIS, WORK_LOAD_ANALYSIS, CLUSTER_EVENT_ANALYSIS } = CONSTANTS;
   const [visibleUI, setVisibleUI] = useState(DEFAULT);
   const [data, setData] = useState({});
-  
+
+  // Cluster Call
   async function onIndexStats(path) {
     // Validation for path
     if (!path) {
@@ -18,7 +19,7 @@ export default (props) => {
 
     try {
       const data = await window.engineAPI.indexStats(path);
-      if(!data) {
+      if (!data) {
         return false
       }
       setData(data);
@@ -28,6 +29,60 @@ export default (props) => {
     }
   }
 
+  async function onConnectionAnalysis(path) {
+    // Validation for path
+    if (!path) {
+      alert("Please enter the MongoDB URL to scan");
+      return;
+    }
+
+    try {
+      const data = await window.engineAPI.connectionAnalysis(path);
+      if (!data) {
+        return false
+      }
+      setData(data);
+      console.log(data)
+      setVisibleUI(CONNECTION_ANALYSIS);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function onWriteLoadAnalysis(path) {
+    // Validation for path
+    if (!path) {
+      alert("Please enter the MongoDB URL to scan");
+      return;
+    }
+
+    try {
+      const data = await window.engineAPI.writeLoadAnalysis(path);
+      console.log(data);
+      if (!data) {
+        return false
+      }
+      let display_oplog_count_by_optype = [];
+      let nameSpaces = data.oplog_count_by_optype.map((element) => {
+        element.operations.forEach(ele => {
+          element[ele.op] = ele.opCount
+        });
+        display_oplog_count_by_optype.push(element);
+        return element._id || "No Op";
+      })
+
+      data.display_oplog_count_by_optype = display_oplog_count_by_optype;
+      data.nameSpaces = nameSpaces;
+      setData(data);
+
+      setVisibleUI(WORK_LOAD_ANALYSIS);
+    } catch (error) {
+      console.error(error);
+    }
+
+  }
+
+  // LogFile Analysis
   async function onFilePicker(event) {
     const file = event?.target?.files[0];
     const path = file?.path;
@@ -59,6 +114,23 @@ export default (props) => {
     }
   }
 
+  async function onClusterEventAnalysis(path) {
+    if (!path) {
+      alert("Please select a log file to get started");
+      return;
+    }
+    try {
+      const data = await window.engineAPI.clusterEventAnalysis(path);
+      const clusterEvents = [];
+      console.log(data);
+      setData(data);
+      console.log(data);
+      setVisibleUI(CLUSTER_EVENT_ANALYSIS);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   function onActionTrigger({ value, payload, path, type }) {
     console.log("onActionTrigger:path", path);
     switch (value) {
@@ -72,6 +144,12 @@ export default (props) => {
       case "Query Analysis Filter":
         onQueryAnalysis(path);
         break;
+      case "Connection Analysis":
+        return onConnectionAnalysis(path);
+      case "Write Load Analysis":
+        return onWriteLoadAnalysis(path);
+      case "Cluster Event Analysis":
+        return onClusterEventAnalysis(path)
       default:
         break;
     }
@@ -92,7 +170,7 @@ export default (props) => {
           />
         </div>
       ) : (
-        <ResultLayout data={data} backAction={onBackAction} onAction={onActionTrigger} displayComponent={visibleUI}/>
+        <ResultLayout data={data} backAction={onBackAction} onAction={onActionTrigger} displayComponent={visibleUI} />
       )}
     </>
   );

@@ -12,6 +12,19 @@ const DisplayNameMappers = {
   unusedIdx: "Unused Indexes",
   totalIdx: "Total Indexes",
   totalCollections: "Total Collections",
+  active_connections: "Active Connections",
+  available_connections: "Available Connections",
+  current_connections: "Current Connections",
+  total_created_connections: "Total Created Connections",
+  "i": "Insert",
+  "u": "Update",
+  "d": "Delete",
+  "c": "db Command",
+  "n": "No Op",
+  configuredSize: "Oplog Size (MB)",
+  timeDiffHours: "Replication Window (Hours)",
+  oplogGbPerHour: "Oplog GB/HR",
+  recomendedAtlas: "Minimum Recomended Oplog Size (MB)"
 }
 
 export default DisplayNameMappers;

@@ -2,7 +2,16 @@ import React from "react";
 import DisplayNameMappers from "../../misc/DisplayNameMappers"
 
 export default function StatSummary(props) {
-  const { dataList, name } = props;
+
+  const { dataList, name, noOfBoxes } = props;
+  let width = " w-1/5"
+  if(noOfBoxes === 2) {
+    width = " w-1/3"
+  } else if (noOfBoxes === 3) {
+    width = " w-1/4"
+  } else {
+    width = " w-1/5"
+  }
   const availableSummaries = Object.keys(DisplayNameMappers);
   return (
     <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200 m-10">
@@ -17,7 +26,7 @@ export default function StatSummary(props) {
           return (
             <div
               key={DisplayNameMappers[s]}
-              className="border border-slate-200 w-1/5 bg-white rounded overflow-hidden shadow-lg m-5"
+              className={"border border-slate-200 bg-white rounded overflow-hidden shadow-lg m-5" + width}
             >
               <div className="px-6 py-4">
                 <div className="text-m mb-2">{DisplayNameMappers[s]}</div>

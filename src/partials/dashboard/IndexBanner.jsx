@@ -5,12 +5,41 @@ import heroImage from "../../images/hero.png";
 // TODO: Discuss should we have a central place to list all analysis
 function IndexBanner(props) {
   const actions = [
-    { value: "Index Analysis", label: "Index Analysis", type: "cluster" },
+    {
+      value: "Index Analysis",
+      label: "Index Analysis",
+      type: "cluster",
+      alertMessage: "",
+      infoMessage: "",
+    },
     // { value: "Oplog Analysis", label: "Oplog Analysis", type: "cluster" },
     {
       value: "Query Analysis",
       label: "Query Analysis (Log Analysis)",
       type: "log",
+      alertMessage: "",
+      infoMessage: ".log (max size - 1GB)",
+    },
+    {
+      value: "Connection Analysis",
+      label: "Connection Analysis",
+      type: "cluster",
+      alertMessage: "",
+      infoMessage: "",
+    },
+    {
+      value: "Write Load Analysis",
+      label: "Write Load Analysis (Oplog Analysis)",
+      type: "cluster",
+      alertMessage: "This is an expensive process and will run COLLSCAN on Oplog.rs. Please use with Caution",
+      infoMessage: "",
+    },
+    {
+      value: "Cluster Event Analysis",
+      label: "Cluster Event Analysis",
+      type: "log",
+      alertMessage: "",
+      infoMessage: "",
     },
   ];
   // { value: "Sharding Analysis", label: "Sharding Analysis", type: "cluster" },
@@ -30,6 +59,13 @@ function IndexBanner(props) {
   //   type: "log",
   // },
   // { value: "Connection Analysis", label: "Connection Analysis", type: "log" },
+  // {
+  //   value: "Sharding Analysis",
+  //   label: "Sharding Analysis",
+  //   type: "cluster",
+  //   alertMessage: "",
+  //   infoMessage: "",
+  // },
 
   const [actionSelected, setActionSelected] = useState({});
   const [connectionUrl, setConnectionUrl] = useState("");
@@ -55,8 +91,8 @@ function IndexBanner(props) {
       type: actionSelected.type,
       path: connectionUrl,
     });
-    if(!ret) {
-      setLoader(false)
+    if (!ret) {
+      setLoader(false);
     }
   }
 
@@ -103,12 +139,27 @@ function IndexBanner(props) {
                 placeholder="mongodb+srv://your-cluster-link/?rsname"
                 className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-leafy-600 rounded transition ease-in-out m-0 focus:border-leafy-600 focus:bg-white focus:border-leafy-600 focus:outline-none"
               />
+              {actionSelected.infoMessage !== "" && (
+                <p className=" text-sm text-slate-700" id="file_input_help">
+                  {actionSelected.infoMessage}
+                </p>
+              )}
+              {actionSelected.alertMessage !== "" && (
+                <p className=" bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role={"alert"}>
+                  {actionSelected.alertMessage}
+                </p>
+              )}
             </div>
           )}
 
           {actionSelected.type === "log" && (
             <>
-              <label class="mt-4 block text-sm font-medium text-slate-600" for="file_input">Upload file</label>
+              <label
+                className="mt-4 block text-sm font-medium text-slate-600"
+                htmlFor="file_input"
+              >
+                Upload file
+              </label>
               <input
                 className="block p-2 w-full text-sm text-grey bg-white rounded-lg border border-leafy-300 cursor-pointer focus:outline-none"
                 id="file_input"
@@ -118,7 +169,16 @@ function IndexBanner(props) {
                 }}
                 accept=".log"
               />
-              <p class=" text-sm text-slate-700" id="file_input_help">.log (max size - 1GB)</p>
+              {actionSelected.infoMessage !== "" && (
+                <p className=" text-sm text-slate-700" id="file_input_help">
+                  {actionSelected.infoMessage}
+                </p>
+              )}
+              {actionSelected.alertMessage !== "" && (
+                <p className=" bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role={"alert"}>
+                  {actionSelected.alertMessage}
+                </p>
+              )}
             </>
           )}
 
