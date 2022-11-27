@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import Select from "react-select";
-import heroImage from "../../images/hero.png";
+import React, { useEffect, useState } from "react"
+import Select from "react-select"
+import heroImage from "../../images/hero.png"
 
 // TODO: Discuss should we have a central place to list all analysis
 function IndexBanner(props) {
@@ -41,7 +41,7 @@ function IndexBanner(props) {
       alertMessage: "",
       infoMessage: ".log files only. Works for MongoDB v4.4+.",
     },
-  ];
+  ]
   // { value: "Sharding Analysis", label: "Sharding Analysis", type: "cluster" },
   // {
   //   value: "General Cluster Health",
@@ -67,122 +67,122 @@ function IndexBanner(props) {
   //   infoMessage: "",
   // },
 
-  const [actionSelected, setActionSelected] = useState({});
-  const [connectionUrl, setConnectionUrl] = useState("");
-  const [loader, setLoader] = useState(false);
+  const [ actionSelected, setActionSelected ] = useState({})
+  const [ connectionUrl, setConnectionUrl ] = useState("")
+  const [ loader, setLoader ] = useState(false)
 
   useEffect(() => {
     if (props?.data?.filePath) {
-      setConnectionUrl(props.data.filePath);
+      setConnectionUrl(props.data.filePath)
     }
     return () => {
-      setLoader(false);
-    };
-  }, [props?.data?.filePath]);
+      setLoader(false)
+    }
+  }, [ props?.data?.filePath ])
 
   function toggleLoader() {
-    setLoader(!loader);
+    setLoader(!loader)
   }
 
   async function onAction() {
-    toggleLoader();
+    toggleLoader()
     const ret = await props.onAction({
       value: actionSelected.value,
       type: actionSelected.type,
       path: connectionUrl,
-    });
+    })
     if (!ret) {
-      setLoader(false);
+      setLoader(false)
     }
   }
 
   return (
-    <div className="w-full flex items-center bg-white">
+    <div className="w-full flex items-center bg-white dark:bg-black">
       <div className="w-1/2 bg-leafy-900 h-full flex items-center">
-        <img src={heroImage} />
+        <img src={ heroImage } />
       </div>
       <div className="relative pl-6 md:pl-28 rounded-sm w-1/2">
         <div className="max-w-sm w-5/6">
-          {/* Background illustration */}
+          {/* Background illustration */ }
           <div
             className="absolute right-0 top-0 -mt-4 mr-16 pointer-events-none hidden xl:block"
             aria-hidden="true"
           ></div>
 
-          {/* Content */}
+          {/* Content */ }
           <div className="relative">
-            <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">
+            <h1 className="text-2xl md:text-3xl dark:text-slate-200 text-slate-800 font-bold mb-1">
               Hello 👋!
             </h1>
-            <p>Please select the analysis you want to do:</p>
+            <p className=" dark:text-slate-200">Please select the analysis you want to do:</p>
           </div>
 
-          <Select
+          <Select className="dark:bg-black dark:text-slate-100 "
             placeholder="Select Analysis Type"
-            value={actionSelected}
-            options={actions}
-            onChange={(value) => setActionSelected(value)}
+            value={ actionSelected }
+            options={ actions }
+            onChange={ (value) => setActionSelected(value) }
           />
 
-          {actionSelected.type === "cluster" && (
+          { actionSelected.type === "cluster" && (
             <div className="mt-5">
               <label
                 htmlFor="exampleFormControlInput1"
-                className="form-label inline-block mb-2 text-gray-700"
+                className="form-label inline-block mb-2 text-gray-700  dark:text-slate-100"
               >
                 Enter Cluster Link
               </label>
               <input
                 id="exampleFormControlInput1"
-                value={connectionUrl}
-                onChange={(e) => setConnectionUrl(e.target.value)}
+                value={ connectionUrl }
+                onChange={ (e) => setConnectionUrl(e.target.value) }
                 placeholder="mongodb+srv://your-cluster-link/?rsname"
-                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-leafy-600 rounded transition ease-in-out m-0 focus:border-leafy-600 focus:bg-white focus:border-leafy-600 focus:outline-none"
+                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:bg-black dark:bg-black bg-white bg-clip-padding border border-solid border-leafy-600 rounded transition ease-in-out m-0 focus:border-leafy-600 focus:bg-white focus:border-leafy-600 focus:outline-none"
               />
-              {actionSelected.infoMessage !== "" && (
-                <p className=" text-sm text-slate-700" id="file_input_help">
-                  {actionSelected.infoMessage}
+              { actionSelected.infoMessage !== "" && (
+                <p className=" text-sm text-slate-700 dark:text-slate-100" id="file_input_help">
+                  { actionSelected.infoMessage }
                 </p>
-              )}
-              {actionSelected.alertMessage !== "" && (
-                <p className=" bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role={"alert"}>
-                  {actionSelected.alertMessage}
+              ) }
+              { actionSelected.alertMessage !== "" && (
+                <p className=" bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role={ "alert" }>
+                  { actionSelected.alertMessage }
                 </p>
-              )}
+              ) }
             </div>
-          )}
+          ) }
 
-          {actionSelected.type === "log" && (
+          { actionSelected.type === "log" && (
             <>
               <label
-                className="mt-4 block text-sm font-medium text-slate-600"
+                className="mt-4 block text-sm font-medium dark:text-slate-100 text-slate-600"
                 htmlFor="file_input"
               >
                 Upload file
               </label>
               <input
-                className="block p-2 w-full text-sm text-grey bg-white rounded-lg border border-leafy-300 cursor-pointer focus:outline-none"
+                className="block p-2 w-full text-sm text-grey file:rounded-full file:border-0 file:py-2 file:px-4 file:dark:text-slate-100 file:dark:bg-leafy-800 hover:file:dark:bg-leafy-700 file:bg-leafy-100 file:text-leafy-700 hover:file:bg-leafy-200 bg-white dark:bg-black dark:text-slate-100 rounded-lg border  border-leafy-300 cursor-pointer focus:outline-none"
                 id="file_input"
                 type="file"
-                onChange={(e) => {
-                  props.onAction({ value: "File Picker", payload: e });
-                }}
+                onChange={ (e) => {
+                  props.onAction({ value: "File Picker", payload: e })
+                } }
                 accept=".log"
               />
-              {actionSelected.infoMessage !== "" && (
-                <p className=" text-sm text-slate-700" id="file_input_help">
-                  {actionSelected.infoMessage}
+              { actionSelected.infoMessage !== "" && (
+                <p className=" text-sm text-slate-700 dark:text-slate-300" id="file_input_help">
+                  { actionSelected.infoMessage }
                 </p>
-              )}
-              {actionSelected.alertMessage !== "" && (
-                <p className=" bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role={"alert"}>
-                  {actionSelected.alertMessage}
+              ) }
+              { actionSelected.alertMessage !== "" && (
+                <p className=" bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role={ "alert" }>
+                  { actionSelected.alertMessage }
                 </p>
-              )}
+              ) }
             </>
-          )}
+          ) }
 
-          {loader === true ? (
+          { loader === true ? (
             <button
               type="button"
               className="btn bg-leafy-800 hover:bg-leafy-900 text-white mt-3"
@@ -212,19 +212,19 @@ function IndexBanner(props) {
             </button>
           ) : (
             <button
-              onClick={(e) => {
-                e.preventDefault();
-                onAction();
-              }}
+              onClick={ (e) => {
+                e.preventDefault()
+                onAction()
+              } }
               className="p-2 btn bg-leafy-800 hover:bg-leafy-900 text-white mt-3"
             >
               Submit
             </button>
-          )}
+          ) }
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default IndexBanner;
+export default IndexBanner
