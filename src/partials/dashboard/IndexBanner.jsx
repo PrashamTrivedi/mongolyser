@@ -117,7 +117,9 @@ function IndexBanner(props) {
             <p className=" dark:text-slate-200">Please select the analysis you want to do:</p>
           </div>
 
-          <Select className="dark:bg-black dark:text-slate-100 "
+          <Select
+            className="analyzer-container"
+            classNamePrefix="analyzer"
             placeholder="Select Analysis Type"
             value={ actionSelected }
             options={ actions }

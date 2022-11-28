@@ -20,13 +20,50 @@
     margin-bottom: 40px;
 }
 
-.scroll-mongo-to-top > svg {
+.scroll-mongo-to-top>svg {
     height: 16px;
     width: 16px;
 }
 
-.form-checkbox, .form-radio {
+.form-checkbox,
+.form-radio {
     color: #00684A !important;
     border-color: #00684A !important;
     outline-color: #00684A;
+}
+
+@layer components {
+
+    /* .analyzer-container {
+  } */
+/* Source: https: //stackoverflow.com/a/71067532 */
+    .analyzer-container .analyzer__control {
+        @apply dark:bg-black dark:text-slate-100;
+    }
+
+    .analyzer-container .analyzer__control--is-focused {
+        @apply dark:bg-black dark:text-slate-100;
+    }
+
+    .analyzer-container .analyzer__menu {
+        @apply dark:bg-black dark:text-slate-100;
+    }
+
+    .analyzer-container .analyzer__option {
+        @apply dark:bg-black dark:text-slate-100;
+    }
+
+    /* .analyzer-container .analyzer__option--is-focused {
+    @apply bg-neutral-200 dark:bg-neutral-800;
+  } */
+
+    .analyzer-container .analyzer__indicator-separator {
+        @apply bg-neutral-400;
+    }
+
+    .analyzer-container .analyzer__input-container,
+    .analyzer-container .analyzer__placeholder,
+    .analyzer-container .analyzer__single-value {
+        @apply dark:bg-black dark:text-slate-100;
+    }
 }
