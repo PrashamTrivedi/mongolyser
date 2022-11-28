@@ -46,7 +46,7 @@ export default function ClusterEventDashboard(props) {
 
   return (
     <div className="w-screen mb-10">
-      <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200 m-10">
+      <div className="col-span-full bg-white dark:bg-black shadow-lg rounded-sm border border-slate-200 m-10">
         <header className="flex item-center justify-between px-5 py-4 border-b border-slate-100">
           <h2 className="font-semibold text-leafy-900">
             Cluster Event Analysis

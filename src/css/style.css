@@ -36,13 +36,17 @@
 
     /* .analyzer-container {
   } */
-/* Source: https: //stackoverflow.com/a/71067532 */
+    /* Source: https: //stackoverflow.com/a/71067532 */
     .analyzer-container .analyzer__control {
         @apply dark:bg-black dark:text-slate-100;
     }
 
     .analyzer-container .analyzer__control--is-focused {
         @apply dark:bg-black dark:text-slate-100;
+    }
+
+    .analyzer-container .analyzer__value-container .analyzer__input-container .analyzer__input {
+        @apply dark:bg-black dark:text-white;
     }
 
     .analyzer-container .analyzer__menu {
@@ -61,9 +65,10 @@
         @apply bg-neutral-400;
     }
 
-    .analyzer-container .analyzer__input-container,
+    .analyzer-container .analyzer__input-container .analyzer__input,
+    .analyzer__value-container .analyzer__input-container .analyzer__input,
     .analyzer-container .analyzer__placeholder,
-    .analyzer-container .analyzer__single-value {
+    .analyzer__value-container .analyzer__single-value {
         @apply dark:bg-black dark:text-slate-100;
     }
 }
