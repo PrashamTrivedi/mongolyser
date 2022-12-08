@@ -372,6 +372,7 @@ export default (props) => {
           ]}
           paginationPerPage={20}
           fixedHeader
+          theme='default'
           highlightOnHover
           progressPending={isTableLoading}
           data={( isGrouped ? tableDataGrouped : tableData) || []}

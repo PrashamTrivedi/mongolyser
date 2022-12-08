@@ -37,10 +37,12 @@ export default (props) => {
     }
 
     try {
+      const theme = await window.engineAPI.isDarkmode()
       const data = await window.engineAPI.connectionAnalysis(path);
       if (!data) {
         return false
       }
+      data.theme=theme
       setData(data);
       console.log(data)
       setVisibleUI(CONNECTION_ANALYSIS);

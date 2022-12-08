@@ -14,9 +14,9 @@ export default function StatSummary(props) {
   }
   const availableSummaries = Object.keys(DisplayNameMappers);
   return (
-    <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200 m-10">
-      <header className="px-5 py-4 border-b border-slate-100">
-        <h2 className="font-semibold text-leafy-900">{name}</h2>
+    <div className="col-span-full bg-white dark:bg-black shadow-lg rounded-md border border-slate-200 dark:border-slate-600  m-10">
+      <header className="px-5 py-4 border-b-2 dark:border-slate-800 border-slate-100">
+        <h2 className="font-semibold text-leafy-900 dark:text-leafy-200">{name}</h2>
       </header>
       <div className="flex items-start justify-around flex-wrap">
         {Object.keys(dataList).map((s) => {
@@ -26,11 +26,11 @@ export default function StatSummary(props) {
           return (
             <div
               key={DisplayNameMappers[s]}
-              className={"border border-slate-200 bg-white rounded overflow-hidden shadow-lg m-5" + width}
+              className={"border border-slate-200 bg-white dark:bg-black rounded-md overflow-hidden shadow-lg dark:border-slate-600 m-5" + width}
             >
               <div className="px-6 py-4">
-                <div className="text-m mb-2">{DisplayNameMappers[s]}</div>
-                <p className="text-2xl font-bold leading-7 text-leafy-900">
+                <div className="text-m dark:text-leafy-200 mb-2">{DisplayNameMappers[s]}</div>
+                <p className="text-2xl font-bold leading-7 dark:text-leafy-100 text-leafy-900">
                   {dataList[s]}
                 </p>
               </div>

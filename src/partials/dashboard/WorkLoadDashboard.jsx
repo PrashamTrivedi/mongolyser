@@ -131,6 +131,7 @@ export default function WorkLoadDashboard(props) {
                     highlightOnHover
                     progressPending={isTableLoading}
                     pagination
+                    theme='default'
                     data={displayData}
                     columns={columns}
                     defaultSortFieldId={"Namespace"}
@@ -147,6 +148,7 @@ export default function WorkLoadDashboard(props) {
                     data={largest_oplog}
                     columns={largest_oplog_column}
                     expandableRows
+                    theme='default'
                     defaultSortFieldId={"Max Size"}
                     defaultSortAsc={false}
                     expandableRowsComponent={({ data }) => {

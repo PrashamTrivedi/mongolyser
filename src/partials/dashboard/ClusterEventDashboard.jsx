@@ -85,6 +85,7 @@ export default function ClusterEventDashboard(props) {
           data={displayData}
           columns={columns}
           defaultSortFieldId={"Count"}
+          theme='default'
           defaultSortAsc={false}
           expandableRows
           expandableRowsComponent={({ data }) => {

@@ -13,7 +13,7 @@ export default function ResultLayout(props) {
   const { data, backAction, displayComponent, onAction } = props;
   const { INDEX, QUERY_ANALYSIS, CONNECTION_ANALYSIS, WORK_LOAD_ANALYSIS, CLUSTER_EVENT_ANALYSIS } = CONSTANTS;
   return (
-    <div className="w-screen mb-10">
+    <div className="w-screen mb-10 dark:bg-black">
       <BackBanner backAction={backAction} />
       {
           displayComponent === INDEX && (

@@ -13,6 +13,9 @@ const pickerUtils = require('./engine/utils/pickers');
 
 // Create the native browser window.
 function createWindow() {
+
+
+
   const mainWindow = new BrowserWindow({
     width: 1366,
     height: 768,
@@ -39,6 +42,7 @@ function createWindow() {
   if (!app.isPackaged) {
     mainWindow.webContents.openDevTools();
   }
+  
 }
 
 // Setup a local proxy to adjust the paths of requested files when loading
