@@ -24,6 +24,7 @@ const columns = [
 
 export default function ClusterEventDashboard(props) {
   const { data } = props;
+  const currentTheme = props.data.isDarkMode ? 'dark' : ''
   const [displayData, setDisplayData] = useState([]);
 
   useEffect(() => {
@@ -48,7 +49,7 @@ export default function ClusterEventDashboard(props) {
     <div className="w-screen mb-10">
       <div className="col-span-full bg-white dark:bg-black shadow-lg rounded-sm border border-slate-200 m-10">
         <header className="flex item-center justify-between px-5 py-4 border-b border-slate-100">
-          <h2 className="font-semibold text-leafy-900">
+          <h2 className="font-semibold text-leafy-900 dark:text-leafy-200">
             Cluster Event Analysis
           </h2>
         </header>
@@ -85,7 +86,7 @@ export default function ClusterEventDashboard(props) {
           data={displayData}
           columns={columns}
           defaultSortFieldId={"Count"}
-          theme='default'
+          theme={currentTheme}
           defaultSortAsc={false}
           expandableRows
           expandableRowsComponent={({ data }) => {

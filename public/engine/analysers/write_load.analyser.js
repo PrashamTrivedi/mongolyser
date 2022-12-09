@@ -131,7 +131,7 @@ exports.get_write_load_analysis = async (channel, connString) => {
   } catch (ex) {
     console.error(ex);
     dialog.showMessageBoxSync({
-      message: err.message,
+      message: ex.message,
       title: "Something Went Wrong.",
       type: "info"
     })
