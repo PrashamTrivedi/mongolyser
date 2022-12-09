@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Select from "react-select"
 import heroImage from "../../images/hero.png"
+import Checkbox from "../utils/Checkbox/index.jsx"
 
 // TODO: Discuss should we have a central place to list all analysis
 function IndexBanner(props) {
@@ -111,6 +112,8 @@ function IndexBanner(props) {
 
           {/* Content */ }
           <div className="relative">
+
+            
             <h1 className="text-2xl md:text-3xl dark:text-slate-200 text-slate-800 font-bold mb-1">
               Hello 👋!
             </h1>

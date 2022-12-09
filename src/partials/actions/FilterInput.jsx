@@ -43,7 +43,7 @@ function FilterInput(props = defaultProps) {
     <div className="relative inline-flex">
       <button
         ref={trigger}
-        className="btn bg-white border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-600"
+        className="btn bg-white dark:bg-black border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 dark:text-slate-300 hover:text-slate-600 dark:hover:text-slate-200"
         aria-haspopup="true"
         onClick={() => setDropdownOpen(!dropdownOpen)}
         aria-expanded={dropdownOpen}
@@ -57,7 +57,7 @@ function FilterInput(props = defaultProps) {
       <Transition
         show={dropdownOpen}
         tag="div"
-        className="origin-top-right z-10 absolute top-full left-0 right-auto md:left-auto md:right-0 min-w-56 bg-white border border-slate-200 pt-1.5 rounded shadow-lg overflow-hidden mt-1"
+        className="origin-top-right z-10 absolute top-full left-0 right-auto md:left-auto md:right-0 min-w-56 bg-white dark:bg-black border border-slate-200 dark:border-slate-700 pt-1.5 rounded shadow-lg overflow-hidden mt-1"
         enter="transition ease-out duration-200 transform"
         enterStart="opacity-0 -translate-y-2"
         enterEnd="opacity-100 translate-y-0"
@@ -66,15 +66,15 @@ function FilterInput(props = defaultProps) {
         leaveEnd="opacity-0"
       >
         <div ref={dropdown}>
-          <div className="text-xs font-semibold text-slate-400 uppercase pt-1.5 pb-2 px-4">Filters</div>
-          <input type={props.type} value={filterText} onChange={(e) => setFilterText(e.target.value)} className='text-xs text-slate-700 border border-slate-300 mx-4 my-2 p-2 rounded w-5/6' />
-          <div className="py-2 px-3 border-t border-slate-200 bg-slate-50">
+          <div className="text-xs font-semibold text-slate-400 dark:text-slate-200 uppercase pt-1.5 pb-2 px-4">Filters</div>
+          <input type={props.type} value={filterText} onChange={(e) => setFilterText(e.target.value)} className='text-xs text-slate-700 dark:bg-black dark:text-slate-200 border border-slate-300 dark:border-slate-600 mx-4 my-2 p-2 rounded w-5/6' />
+          <div className="py-2 px-3 border-t border-slate-200 dark:border-slate-800 dark:bg-slate-900 bg-slate-50">
             <ul className="flex items-center justify-between">
               <li>
-                <button className="btn-xs bg-white border-slate-200 hover:border-slate-300 text-slate-500 hover:text-slate-600">Clear</button>
+                <button className="btn-xs bg-white dark:bg-black border-slate-200 dark:border-slate-700  hover:border-slate-300 dark:hover:border-slate-600 text-slate-500 dark:text-slate-300 hover:text-slate-600 dark:hover-text-slate-200">Clear</button>
               </li>
               <li>
-                <button className="btn-xs bg-leafy-800 hover:bg-leafy-900 text-white" onClick={() => {
+                <button className="btn-xs bg-leafy-800 dark:bg-leafy-400 hover:bg-leafy-900 dark:hover:bg-leafy-300 dark:text-black text-white" onClick={() => {
                   setDropdownOpen(false);
 
                   if (props.validate(filterText)) {

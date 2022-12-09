@@ -22,6 +22,7 @@ const columns = [
 
 export default function ConnectionDashboard(props) {
     const { connectionList } = props.data
+    const currentTheme = props.data.isDarkMode ? 'dark' : ''
     return (
         <div className="w-screen mb-10 dark:bg-black">
             <div className="col-span-full bg-white dark:bg-black shadow-lg rounded-md border dark:border-slate-700 border-slate-200 m-10">
@@ -41,7 +42,7 @@ export default function ConnectionDashboard(props) {
                     fixedHeader
                     highlightOnHover
                     pagination
-                    theme="default"
+                    theme={currentTheme}
                     data={ connectionList }
                     columns={ columns }
                     defaultSortFieldId={ "Current Connections" }

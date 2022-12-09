@@ -206,6 +206,8 @@ export default (props) => {
     resetDefault: false
   });
 
+  const currentTheme = props.data.isDarkMode?'dark':''
+  
   const [tableSort, setTableSort] = useState({
     "count": -1
   })
@@ -313,13 +315,13 @@ export default (props) => {
   return (
     <div className="w-screen mb-10">
       {/* Table section */}
-      <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200 m-10">
-        <header className="flex item-center justify-between px-5 py-4 border-b border-slate-100">
-          <h2 className="font-semibold text-leafy-900">Query Analysis Details</h2>
+      <div className="col-span-full bg-white dark:bg-black dark:border-slate-700 shadow-lg rounded-sm border border-slate-200 m-10">
+        <header className="flex item-center justify-between dark:bg-black dark:border-slate-800 px-5 py-4 border-b border-slate-100">
+          <h2 className="font-semibold text-leafy-900 dark:text-leafy-100">Query Analysis Details</h2>
           
           {/* Grou Checkbox */}
           <div className="flex items-center">
-            <span className="mr-4 font-semibold text-leafy-800">Group by Query</span>
+            <span className="mr-4 font-semibold text-leafy-800 dark:text-leafy-200">Group by Query</span>
             <Checkbox checked={isGrouped} setChecked={() => {
               setIsGrouped(!isGrouped);
             }} />
@@ -356,8 +358,8 @@ export default (props) => {
           <button title="Reset Search" onClick={e => {
             resetSearch();
             e.preventDefault();
-          }} className="btn bg-leafy-800 hover:bg-leafy-900 text-white">
-            <svg className="rotate-45 w-4 h-4 fill-white opacity-50 shrink-0" viewBox="0 0 16 16">
+          }} className="btn bg-leafy-800 dark:bg-leafy-200 dark:hover:bg-leafy-100 dark:text-black hover:bg-leafy-900 text-white">
+            <svg className="rotate-45 w-4 h-4 fill-white dark:fill-black opacity-50 shrink-0" viewBox="0 0 16 16">
               <path d="M15 7H9V1c0-.6-.4-1-1-1S7 .4 7 1v6H1c-.6 0-1 .4-1 1s.4 1 1 1h6v6c0 .6.4 1 1 1s1-.4 1-1V9h6c.6 0 1-.4 1-1s-.4-1-1-1z" />
             </svg>
           </button>            
@@ -367,12 +369,12 @@ export default (props) => {
           conditionalRowStyles={[
             {  
               when: row => row["Plan Summary"] === "COLLSCAN",
-              style: row => ({ backgroundColor: "#FFCDC7" })
+              classNames: [ 'specialCell' ]
             }
           ]}
           paginationPerPage={20}
           fixedHeader
-          theme='default'
+          theme={currentTheme}
           highlightOnHover
           progressPending={isTableLoading}
           data={( isGrouped ? tableDataGrouped : tableData) || []}
@@ -391,9 +393,10 @@ export default (props) => {
           paginationServer
           paginationResetDefaultPage={paginationData.resetDefault}
           expandableRows
+          
           expandableRowsComponent={({ data }) => {
             return (
-              <pre className="text-slate-50 bg-slate-600 rounded border border-slate-300 p-10">
+              <pre className="text-slate-50 dark:text-slate-900 dark:bg-slate-300 dark:border-slate-600 bg-slate-600 rounded border border-slate-300 p-10">
                 <code className="text-xs">
                   {JSON.stringify(JSON.parse(data.Log), null, 4)}
                 </code>

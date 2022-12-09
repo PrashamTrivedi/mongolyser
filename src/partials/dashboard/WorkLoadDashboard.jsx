@@ -81,7 +81,7 @@ export default function WorkLoadDashboard(props) {
 
     const { largest_oplog, nameSpaces, display_oplog_count_by_optype } = data;
 
-
+    const currentTheme = props.data.isDarkMode ? 'dark' : ''
     useEffect(() => {
         setDisplayData(display_oplog_count_by_optype);
     }, [display_oplog_count_by_optype])
@@ -123,7 +123,7 @@ export default function WorkLoadDashboard(props) {
                     conditionalRowStyles={[
                         {
                             when: row => (row["_id"].split(".")[0] === "local" || row["_id"].split(".")[0] === "config" || row["_id"].split(".")[0] === "admin" || row["_id"] === ""),
-                            style: row => ({ backgroundColor: "#FFCDC7" })
+                            classNames: [ 'specialCell' ]
                         }
                     ]}
                     paginationPerPage={5}
@@ -131,7 +131,7 @@ export default function WorkLoadDashboard(props) {
                     highlightOnHover
                     progressPending={isTableLoading}
                     pagination
-                    theme='default'
+                    theme={currentTheme}
                     data={displayData}
                     columns={columns}
                     defaultSortFieldId={"Namespace"}

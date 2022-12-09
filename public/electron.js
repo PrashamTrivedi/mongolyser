@@ -1,5 +1,5 @@
 // Module to control the application lifecycle and the native browser window.
-const { app, BrowserWindow, protocol, dialog, ipcMain } = require("electron");
+const { app, BrowserWindow, protocol, dialog, ipcMain,nativeTheme } = require("electron");
 const path = require("path");
 const url = require("url");
 
@@ -38,6 +38,22 @@ function createWindow() {
     : "http://localhost:3000";
   mainWindow.loadURL(appURL);
 
+  ipcMain.handle('dark-mode:toggle', () => {
+    if (nativeTheme.shouldUseDarkColors) {
+      nativeTheme.themeSource = 'light'
+    } else {
+      nativeTheme.themeSource = 'dark'
+    }
+    return nativeTheme.shouldUseDarkColors
+  })
+
+  ipcMain.handle('dark-mode:system', () => {
+    nativeTheme.themeSource = 'system'
+  })
+  ipcMain.handle('dark-mode:get', () => {
+    return nativeTheme.shouldUseDarkColors
+  })
+
   // Automatically open Chrome's DevTools in development mode.
   if (!app.isPackaged) {
     mainWindow.webContents.openDevTools();
@@ -65,6 +81,7 @@ function setupLocalFilesNormalizerProxy() {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   // Register Index Stats IPC 
+
   try {
     ipcMain.handle('engine:indexStats', indexStats.get_index_stats);
     ipcMain.handle('engine:filePicker', pickerUtils.filePicker);
@@ -86,6 +103,7 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createWindow();
     }
+    console.log(nativeTheme.shouldUseDarkColors)
   });
 }).catch(e => {
   dialog.showErrorBox("Error", e);
