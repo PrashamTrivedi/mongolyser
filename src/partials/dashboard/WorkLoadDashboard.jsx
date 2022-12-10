@@ -100,9 +100,9 @@ export default function WorkLoadDashboard(props) {
 
     return (
         <div className="w-screen mb-10">
-            <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200 m-10">
-                <header className="flex item-center justify-between px-5 py-4 border-b border-slate-100">
-                    <h2 className="font-semibold text-leafy-900">WriteLoad Analysis</h2>
+            <div className="col-span-full bg-white dark:bg-black shadow-lg rounded-sm border border-slate-200 dark:border-slate-800 m-10">
+                <header className="flex item-center justify-between px-5 py-4 border-b border-slate-100 dark:border-slate-800">
+                    <h2 className="font-semibold text-leafy-900 dark:text-leafy-200">WriteLoad Analysis</h2>
                 </header>
 
                 <div className="my-5 px-5 grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
@@ -139,9 +139,9 @@ export default function WorkLoadDashboard(props) {
                 />
             </div>
 
-            <div className="col-span-full bg-white shadow-lg rounded-sm border border-slate-200 m-10">
-                <header className="flex item-center justify-between px-5 py-4 border-b border-slate-100">
-                    <h2 className="font-semibold text-leafy-900">Large OpLogs by Size(Bytes)</h2>
+            <div className="col-span-full bg-white dark:bg-black shadow-lg rounded-sm border border-slate-200 dark:border-slate-700 m-10">
+                <header className="flex item-center justify-between px-5 py-4 border-b border-slate-100  dark:border-slate-600">
+                    <h2 className="font-semibold text-leafy-900 dark:text-leafy-300">Large OpLogs by Size(Bytes)</h2>
                 </header>
 
                 <DataTable

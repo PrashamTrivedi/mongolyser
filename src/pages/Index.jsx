@@ -67,13 +67,13 @@ export default (props) => {
     try {
       const isDarkMode = await window.darkMode.isDarkMode()
       const data = await window.engineAPI.writeLoadAnalysis(path)
+      if (!data) {
+        return false
+      }
       if (isDarkMode) {
         data.isDarkMode = isDarkMode
       }
       console.log(data)
-      if (!data) {
-        return false
-      }
       let display_oplog_count_by_optype = []
       let nameSpaces = data.oplog_count_by_optype.map((element) => {
         element.operations.forEach(ele => {
