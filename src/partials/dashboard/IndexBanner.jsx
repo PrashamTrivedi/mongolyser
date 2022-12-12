@@ -236,17 +236,18 @@ function IndexBanner(props) {
             </button>
           ) }
 
-          <div className="flex-auto flex space-x-4">
-            <button id="toggle-dark-mode" className=" px-6 mr-2 btn bg-leafy-800 hover:bg-leafy-900 text-white mt-3" onClick={ (e) => {
-              e.preventDefault()
-              toggleDarkMode()
-            } }>Toggle Dark Mode</button>
-            <button id="reset-to-system" className=" px-6 ml-2 btn bg-leafy-800 hover:bg-leafy-900 text-white mt-3" onClick={ (e) => {
-              e.preventDefault()
-              resetThemeToSystem()
-            } }>Reset to System Theme</button>
-          </div>
+          
         </div>
+      </div>
+      <div className="flex-auto flex absolute space-x-4 bottom-4 right-2  ">
+        <button id="toggle-dark-mode" className=" px-2 mr-2 btn bg-leafy-800 hover:bg-leafy-900 text-white mt-3 text-xs" onClick={ (e) => {
+          e.preventDefault()
+          toggleDarkMode()
+        } }>Toggle Dark Mode</button>
+        <button id="reset-to-system" className=" px-2 ml-2 btn bg-leafy-800 hover:bg-leafy-900 text-white mt-3 text-xs" onClick={ (e) => {
+          e.preventDefault()
+          resetThemeToSystem()
+        } }>Reset to System Theme</button>
       </div>
     </div>
   )
