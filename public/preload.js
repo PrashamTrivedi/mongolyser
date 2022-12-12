@@ -12,7 +12,7 @@ process.once("loaded", () => {
 
   contextBridge.exposeInMainWorld('darkMode', {
     toggle: () => ipcRenderer.invoke('dark-mode:toggle'),
-    system: () => ipcRenderer.invoke('dark-mode:system'),
+    resetToSystemTheme: () => ipcRenderer.invoke('dark-mode:system'),
     isDarkMode:()=> ipcRenderer.invoke('dark-mode:get')
   })
 

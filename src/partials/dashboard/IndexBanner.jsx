@@ -85,6 +85,16 @@ function IndexBanner(props) {
     setLoader(!loader)
   }
 
+
+  async function toggleDarkMode() {
+    await window.darkMode.toggle()
+  }
+
+  async function resetThemeToSystem() {
+    await window.darkMode.resetToSystemTheme()
+  }
+
+
   async function onAction() {
     toggleLoader()
     const ret = await props.onAction({
@@ -113,7 +123,6 @@ function IndexBanner(props) {
           {/* Content */ }
           <div className="relative">
 
-            
             <h1 className="text-2xl md:text-3xl dark:text-slate-200 text-slate-800 font-bold mb-1">
               Hello 👋!
             </h1>
@@ -226,6 +235,17 @@ function IndexBanner(props) {
               Submit
             </button>
           ) }
+
+          <div className="flex-auto flex space-x-4">
+            <button id="toggle-dark-mode" className=" px-6 mr-2 btn bg-leafy-800 hover:bg-leafy-900 text-white mt-3" onClick={ (e) => {
+              e.preventDefault()
+              toggleDarkMode()
+            } }>Toggle Dark Mode</button>
+            <button id="reset-to-system" className=" px-6 ml-2 btn bg-leafy-800 hover:bg-leafy-900 text-white mt-3" onClick={ (e) => {
+              e.preventDefault()
+              resetThemeToSystem()
+            } }>Reset to System Theme</button>
+          </div>
         </div>
       </div>
     </div>
