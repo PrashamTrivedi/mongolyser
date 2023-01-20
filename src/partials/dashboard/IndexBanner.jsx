@@ -108,7 +108,7 @@ function IndexBanner(props) {
   }
 
   return (
-    <div className="w-full flex items-center bg-white dark:bg-black">
+    <div className="w-full flex items-center bg-white dark:bg-dark">
       <div className="w-1/2 bg-leafy-900 h-full flex items-center">
         <img src={ heroImage } />
       </div>
@@ -151,7 +151,7 @@ function IndexBanner(props) {
                 value={ connectionUrl }
                 onChange={ (e) => setConnectionUrl(e.target.value) }
                 placeholder="mongodb+srv://your-cluster-link/?rsname"
-                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:bg-black dark:bg-black bg-white bg-clip-padding border border-solid border-leafy-600 rounded transition ease-in-out m-0 focus:border-leafy-600 focus:bg-white focus:border-leafy-600 focus:outline-none"
+                className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 dark:text-slate-100 dark:placeholder:text-slate-500 dark:focus:bg-dark dark:bg-dark bg-white bg-clip-padding border border-solid border-leafy-600 rounded transition ease-in-out m-0 focus:border-leafy-600 focus:bg-white focus:border-leafy-600 focus:outline-none"
               />
               { actionSelected.infoMessage !== "" && (
                 <p className=" text-sm text-slate-700 dark:text-slate-100" id="file_input_help">
@@ -175,7 +175,7 @@ function IndexBanner(props) {
                 Upload file
               </label>
               <input
-                className="block p-2 w-full text-sm text-grey file:rounded-full file:border-0 file:py-2 file:px-4 file:dark:text-slate-100 file:dark:bg-leafy-800 hover:file:dark:bg-leafy-700 file:bg-leafy-100 file:text-leafy-700 hover:file:bg-leafy-200 bg-white dark:bg-black dark:text-slate-100 rounded-lg border  border-leafy-300 cursor-pointer focus:outline-none"
+                className="block p-2 w-full text-sm text-grey file:rounded-full file:border-0 file:py-2 file:px-4 file:dark:text-slate-100 file:dark:bg-leafy-800 hover:file:dark:bg-leafy-700 file:bg-leafy-100 file:text-leafy-700 hover:file:bg-leafy-200 bg-white dark:bg-dark dark:text-slate-100 rounded-lg border  border-leafy-300 cursor-pointer focus:outline-none"
                 id="file_input"
                 type="file"
                 onChange={ (e) => {
@@ -236,7 +236,7 @@ function IndexBanner(props) {
             </button>
           ) }
 
-          
+
         </div>
       </div>
       <div className="flex-auto flex absolute space-x-4 bottom-4 right-2  ">

@@ -16,6 +16,10 @@ process.once("loaded", () => {
     isDarkMode:()=> ipcRenderer.invoke('dark-mode:get')
   })
 
+  contextBridge.exposeInMainWorld('utils', {
+    copy: (...args)=>ipcRenderer.invoke('copyToClipboard',...args)
+  })
+
   contextBridge.exposeInMainWorld('engineAPI', {
     dbStats: () => ipcRenderer.invoke('engine:dbStats'),
     indexStats: (...args) => ipcRenderer.invoke('engine:indexStats', ...args),

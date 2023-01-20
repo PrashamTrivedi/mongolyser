@@ -47,7 +47,7 @@
 }
 
 .rdt_Table .rdt_ExpanderRow {
-    @apply dark:bg-black dark:hover:bg-slate-600 dark:text-white
+    @apply dark:bg-dark dark:hover:bg-slate-600 dark:text-white
 
 }
 
@@ -62,23 +62,23 @@
   } */
     /* Source: https: //stackoverflow.com/a/71067532 */
     .analyzer-container .analyzer__control {
-        @apply dark:bg-black dark:text-slate-100;
+        @apply dark:bg-dark dark:text-slate-100;
     }
 
     .analyzer-container .analyzer__control--is-focused {
-        @apply dark:bg-black dark:text-slate-100;
+        @apply dark:bg-dark dark:text-slate-100;
     }
 
     .analyzer-container .analyzer__value-container .analyzer__input-container .analyzer__input {
-        @apply dark:bg-black dark:text-white;
+        @apply dark:bg-dark dark:text-white;
     }
 
     .analyzer-container .analyzer__menu {
-        @apply dark:bg-black dark:text-slate-100;
+        @apply dark:bg-dark dark:text-slate-100;
     }
 
     .analyzer-container .analyzer__option {
-        @apply dark:bg-black dark:text-slate-100;
+        @apply dark:bg-dark dark:text-slate-100;
     }
 
     /* .analyzer-container .analyzer__option--is-focused {
@@ -93,6 +93,6 @@
     .analyzer__value-container .analyzer__input-container .analyzer__input,
     .analyzer-container .analyzer__placeholder,
     .analyzer__value-container .analyzer__single-value {
-        @apply dark:bg-black dark:text-slate-100;
+        @apply dark:bg-dark dark:text-slate-100;
     }
 }

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import FilterButton from "../actions/FilterActionButton";
-import DataTable from "react-data-table-component";
-import { useEffect } from "react";
+import React, { useState } from "react"
+import FilterButton from "../actions/FilterActionButton"
+import DataTable from "react-data-table-component"
+import { useEffect } from "react"
 
 const columns = [
   {
@@ -20,34 +20,34 @@ const columns = [
     reorder: true,
     sortable: true,
   },
-];
+]
 
 export default function ClusterEventDashboard(props) {
-  const { data } = props;
+  const { data } = props
   const currentTheme = props.data.isDarkMode ? 'dark' : ''
-  const [displayData, setDisplayData] = useState([]);
+  const [ displayData, setDisplayData ] = useState([])
 
   useEffect(() => {
-    setDisplayData(data?.data);
-  }, [data?.data]);
+    setDisplayData(data?.data)
+  }, [ data?.data ])
 
   function onSelectFilters(values, type) {
-    console.log("Setting Filters", values, type);
-    console.log(values);
+    console.log("Setting Filters", values, type)
+    console.log(values)
     const filterdValues = data?.data.filter((element) =>
       values.includes(element.key)
-    );
-    setDisplayData(filterdValues);
+    )
+    setDisplayData(filterdValues)
   }
 
   async function resetSearch() {
-    document.dispatchEvent(new CustomEvent("mongolyser:clearfilters"));
-    setDisplayData(data?.data);
+    document.dispatchEvent(new CustomEvent("mongolyser:clearfilters"))
+    setDisplayData(data?.data)
   }
 
   return (
     <div className="w-screen mb-10">
-      <div className="col-span-full bg-white dark:bg-black shadow-lg rounded-sm border border-slate-200 m-10">
+      <div className="col-span-full bg-white dark:bg-dark shadow-lg rounded-sm border border-slate-200 m-10">
         <header className="flex item-center justify-between px-5 py-4 border-b border-slate-100">
           <h2 className="font-semibold text-leafy-900 dark:text-leafy-200">
             Cluster Event Analysis
@@ -55,19 +55,19 @@ export default function ClusterEventDashboard(props) {
         </header>
 
         <div className="my-5 px-5 grid grid-flow-col sm:auto-cols-max justify-start sm:justify-end gap-2">
-          {/* Filter for Collections */}
+          {/* Filter for Collections */ }
           <FilterButton
-            title={"Events"}
-            onSelect={(values) => onSelectFilters(values, "events")}
-            options={Object.keys(data?.data) || []}
+            title={ "Events" }
+            onSelect={ (values) => onSelectFilters(values, "events") }
+            options={ Object.keys(data?.data) || [] }
           />
 
           <button
             title="Reset Search"
-            onClick={(e) => {
-              resetSearch();
-              e.preventDefault();
-            }}
+            onClick={ (e) => {
+              resetSearch()
+              e.preventDefault()
+            } }
             className="btn bg-leafy-800 hover:bg-leafy-900 text-white"
           >
             <svg
@@ -79,27 +79,27 @@ export default function ClusterEventDashboard(props) {
           </button>
         </div>
         <DataTable
-          paginationPerPage={10}
+          paginationPerPage={ 10 }
           fixedHeader
           highlightOnHover
           pagination
-          data={displayData}
-          columns={columns}
-          defaultSortFieldId={"Count"}
-          theme={currentTheme}
-          defaultSortAsc={false}
+          data={ displayData }
+          columns={ columns }
+          defaultSortFieldId={ "Count" }
+          theme={ currentTheme }
+          defaultSortAsc={ false }
           expandableRows
-          expandableRowsComponent={({ data }) => {
+          expandableRowsComponent={ ({ data }) => {
             return (
               <pre className="text-slate-50 bg-slate-600 rounded border border-slate-300 p-10">
                 <code className="text-xs">
-                  {JSON.stringify(JSON.parse(data.log ? data.log : "{}"), null, 4)}
+                  { JSON.stringify(JSON.parse(data.log ? data.log : "{}"), null, 4) }
                 </code>
               </pre>
-            );
-          }}
+            )
+          } }
         />
       </div>
     </div>
-  );
+  )
 }
